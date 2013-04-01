@@ -1,0 +1,80 @@
+;; Object dbow/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dbow/"
+  :tables (list 
+   (semanticdb-table "BowVector.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("iostream" include (:system-flag t) nil [665 684])
+            ("vector" include (:system-flag t) nil [685 702])
+            ("algorithm" include (:system-flag t) nil [703 723])
+            ("cmath" include (:system-flag t) nil [724 740])
+            ("BowVector.h" include nil nil [742 764])
+            ("DBoW2" type
+               (:members 
+                  ( ("BowVector" function
+                       (:constructor-flag t
+                        :parent "BowVector"
+                        :arguments 
+                          ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [885 890]))                          
+                        :type ("BowVector" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [864 894])
+                    ("BowVector" function
+                       (:destructor-flag t
+                        :parent "BowVector"
+                        :arguments 
+                          ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [997 1002]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [975 1006])
+                    ("addWeight" function
+                       (:parent "BowVector"
+                        :arguments 
+                          ( ("id" variable (:type ("WordId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1113 1123])
+                            ("v" variable (:type ("WordValue" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1124 1136]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [1087 1356])
+                    ("addIfNotExist" function
+                       (:parent "BowVector"
+                        :arguments 
+                          ( ("id" variable (:type ("WordId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1467 1477])
+                            ("v" variable (:type ("WordValue" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1478 1490]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [1437 1672])
+                    ("normalize" function
+                       (:parent "BowVector"
+                        :arguments 
+                          ( ("norm_type" variable (:type ("LNorm" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1779 1795]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [1753 2169])
+                    ("<<" function
+                       (:operator-flag t
+                        :arguments 
+                          ( ("out" variable
+                               (:reference 1
+                                :type ("std::ostream" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2276 2294])
+                            ("v" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("BowVector" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2295 2314]))                          
+                        :type ("std::ostream" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [2250 2625]))                  
+                :type "namespace")
+                nil [766 2707]))          
+    :file "BowVector.cpp"
+    :pointmax 2728
+    :fsize 2727
+    :lastmodtime '(20823 4881)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "BowVector.h"
+    :file "BowVector.h"
+    :fsize 2199
+    :lastmodtime '(20823 4881)
+    )
+   )
+  :file "!home!giacomo!sviluppo!LoopCloserRGBD!dboworking!dbow!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.0"
+  )
