@@ -71,6 +71,12 @@
 
 (enable-visual-studio-bookmarks)
 
+(defun astyle-this-buffer (pmin pmax)
+  (interactive "r")
+  (shell-command-on-region pmin pmax
+                           "astyle" ;; add options here...
+                           (current-buffer) t 
+                           (get-buffer-create "*Astyle Errors*") t))
 
 (setq-mode-local c-mode semanticdb-find-default-throttle
                  '(project unloaded system recursive))

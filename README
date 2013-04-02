@@ -1,6 +1,6 @@
 ** Giacomo Picchiarelli
 
-sudo apt-get install emacs w3m-el emacs-goodies
+sudo apt-get install emacs emacs-goodies astyle git subversion mercurial
 
 #build the rest of directories
 
