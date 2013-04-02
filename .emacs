@@ -1,14 +1,17 @@
   ;;; Giacomo Picchiarelli <gpicchiarelli@gmail.com>
-    
+ 
     (defun display-startup-echo-area-message ()
       ".."
       (message "I'm here to serve."))
       (add-to-list 'load-path "~/.emacs.d/")
-
+      (setq load-path (cons "/usr/share/emacs/site-lisp" load-path))
       (load-file "~/.emacs.d/cedet/cedet-devel-load.el")
       (semantic-load-enable-excessive-code-helpers)
       (semantic-load-enable-code-helpers)
       (global-semantic-idle-completions-mode)
+      ;;Shell
+      (require 'shell-command)
+      (shell-command-completion-mode)
 
 (defun my-c-like-cedet-hook ()
   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
@@ -110,10 +113,11 @@
 (add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
 (setq erc-truncate-buffer-on-save t)
 
-(semantic-add-system-include "/usr/include" 'c++-mode)
-(semantic-add-system-include "/usr/include" 'c-mode)
-(semantic-add-system-include "/usr/lib/include" 'c++-mode)
-(semantic-add-system-include "/usr/lib/include" 'c-mode)
+(semantic-add-system-include "/usr/include/*" 'c++-mode)
+(semantic-add-system-include "/usr/include/*" 'c-mode)
+(semantic-add-system-include "/usr/lib/include/*" 'c++-mode)
+(semantic-add-system-include "/usr/lib/include/*" 'c-mode)
+
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
