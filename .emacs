@@ -8,10 +8,8 @@
       (load-file "~/.emacs.d/cedet/cedet-devel-load.el")
       (semantic-load-enable-excessive-code-helpers)
       (semantic-load-enable-code-helpers)
+      (setq semantic-complete-analyze-inline t)
       (global-semantic-idle-completions-mode)
-      ;;Shell
-      (require 'shell-command)
-      (shell-command-completion-mode)
 
 (defun my-c-like-cedet-hook ()
   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
@@ -21,7 +19,7 @@
   (local-set-key "\C-cq" 'semantic-ia-show-doc)
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-  (local-set-key "." 'semantic-complete-self-insert)
+  (local-set-key "." 'semantic-ia-complete-symbol-menu)
   (local-set-key ">" 'semantic-complete-self-insert))
 
 (defun my-cpp-cedet-hook ()
@@ -68,13 +66,30 @@
       (provide 'semanticdb-mode)
       (provide 'semantic-load)
 
+(setq c-style-variables-are-local-p t)
+
+(defun my-c-mode-hooks ()
+  (let ((bname (buffer-file-name)))
+    (cond
+     ((string-match "tools_src/" bname) (c-set-style "gnu"))
+     ((string-match "uClinux/" bname) (c-set-style "linux"))
+     ((string-match "pump/" bname) (c-set-style "gnu"))
+     ((string-match "dhcp-" bname) (c-set-style "gnu"))
+     ((string-match "ipconfd/" bname) (c-set-style "gnu"))
+     ((string-match "gnu/emacs/" bname) (gnu-tabs))
+     ((string-match "nn-tk/" bname) (tab8))
+     ((string-match "gnu" bname) t)
+     ((string-match "\\.[ch]$" bname) (c-set-style "gnu"))
+     )))
+
+(add-hook 'c-mode-hook 'my-c-mode-hooks)
 
 (enable-visual-studio-bookmarks)
 
 (defun astyle-this-buffer (pmin pmax)
   (interactive "r")
   (shell-command-on-region pmin pmax
-                           "astyle" ;; add options here...
+                           "astyle --style=ansi --indent=tab"
                            (current-buffer) t 
                            (get-buffer-create "*Astyle Errors*") t))
 
@@ -241,7 +256,7 @@
  '(ecb-options-version "2.40")
  '(ede-auto-add-method (quote always))
  '(ede-make-command "make -j2")
- '(ede-project-directories (quote ("/home/giacomo/sviluppo/LoopCloserRGBD/dboworking/dbow")))
+ '(ede-project-directories (quote ("/home/giacomo/sviluppo/*")))
  '(erc-nick "n0ti0nis")
  '(erc-nick-uniquifier "`n0ti0nis")
  '(erc-port nil)
@@ -265,3 +280,5 @@
 (require 'color-theme)
 ;(color-theme-simple-1)
 (color-theme-scintilla)
+(set-face-attribute 'default nil :height 100)
+(set-scroll-bar-mode 'right) 

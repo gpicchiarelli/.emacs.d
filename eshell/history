@@ -1,0 +1,11 @@
+top
+ls
+cd ..
+cd ~
+ls
+cd sviluppo
+ls
+cd LoopCloserRGBD/
+ls
+git status
+nano
